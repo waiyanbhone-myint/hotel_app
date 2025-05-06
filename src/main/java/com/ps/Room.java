@@ -6,15 +6,42 @@ public class Room {
     private double price;
     private boolean isOccupied;
     private boolean doneCleaning;
-    private boolean roomAvailable;
+    //private boolean roomAvailable;
 
-    public Room(int roomId, double price, boolean isOccupied, boolean doneCleaning, boolean roomAvailable) {
+    public Room(int roomId, double price) {
         this.roomId = roomId;
         this.price = price;
-        this.isOccupied = isOccupied;
-        this.doneCleaning = doneCleaning;
-        this.roomAvailable = roomAvailable;
+        this.isOccupied = false;
+        this.doneCleaning = true;
+        //this.roomAvailable = roomAvailable;
     }
+
+    public void checkIn(){
+        if(!isOccupied && doneCleaning){
+            isOccupied = true;
+            doneCleaning = false;
+            System.out.println("Room " + roomId + " is available to check in.");
+        } else if (!doneCleaning) {
+            System.out.println("Room " + roomId + " is not clean yet.");
+        } else {
+            System.out.println("Room " + roomId + " is not available.");
+        }
+    }
+
+    public void checkOut(){
+        if(isOccupied){
+            isOccupied = false;
+            doneCleaning = false;
+            System.out.println("Room " + roomId + " checked out and need to clean");
+        }else{
+            System.out.println("Room " + roomId + " is occupied");
+        }
+    }
+
+    public boolean isAvailable(){
+        return !isOccupied && doneCleaning;
+    }
+
 
     public int getRoomId() {
         return roomId;
@@ -46,13 +73,5 @@ public class Room {
 
     public void setDoneCleaning(boolean doneCleaning) {
         this.doneCleaning = doneCleaning;
-    }
-
-    public boolean isRoomAvailable() {
-        return roomAvailable;
-    }
-
-    public void setRoomAvailable(boolean roomAvailable) {
-        this.roomAvailable = roomAvailable;
     }
 }
