@@ -6,20 +6,9 @@ public class Main {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        switch (appMenu()){
-            case 1:
-                break;
-            case 2:
-
-
-        }
-
-    }
-
     //----------Helper Method---------//
 
-    public static int appMenu(){
+    public static int returnUserChoiceAndDisplayMenu(){
         System.out.println("======Welcome to Hotel Management======");
         System.out.println("1. Add Room");
         System.out.println("2. Check In Guest");
@@ -31,22 +20,6 @@ public class Main {
 
         System.out.print("Enter your choice: ");
         return scanner.nextInt();
-    }
-
-    public static void askGuestInfos(){
-        System.out.print("Enter guest name: ");
-        String guestName = scanner.next();
-
-        System.out.print("Enter the room number: ");
-        int roomNumber = scanner.nextInt();
-
-        System.out.print("Enter the room type: ");
-        String roomType = scanner.next();
-
-        System.out.println("Enter the price of the room: ");
-        double roomPrice = scanner.nextDouble();
-
-        RoomManagement roomManagement = new RoomManagement(roomNumber, roomType, roomPrice);
     }
 
 }

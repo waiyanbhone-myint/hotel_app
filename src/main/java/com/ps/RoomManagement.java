@@ -5,9 +5,9 @@ public class RoomManagement {
     private int roomNumber;
     private String type;
     private double payRate;
-    private boolean isOccupied = false;
-    private boolean isClean = true;
-    private String guestName = null;
+    private boolean isOccupied;
+    private boolean isClean;
+    private String guestName;
 
     //---------Constructor----------//
 
@@ -15,6 +15,8 @@ public class RoomManagement {
         this.roomNumber = roomNumber;
         this.type = type;
         this.payRate = payRate;
+        this.isOccupied = false;
+        this.isClean = true;
     }
 
     //-------- Getter and Setter -------//
@@ -72,25 +74,4 @@ public class RoomManagement {
         return !isOccupied && isClean;
     }
 
-
-    public void checkIn() {
-        if (roomIsAvailable()) {
-            System.out.println("Room is available to check In.");
-            isOccupied = true;
-            isClean = false;
-        } else {
-            System.out.println("Room is taken by the guest.");
-        }
-
-    }
-
-    public void checkOut(){
-        if(!isOccupied){
-            System.out.println("Room is already vacant.");
-        }
-        else{
-            System.out.println("Check out steps");
-        }
-
-    }
 }
