@@ -74,4 +74,14 @@ public class RoomManagement {
         return !isOccupied && isClean;
     }
 
+    public void checkIn(String guestName){
+        if (roomIsAvailable()){
+            System.out.println("Room is available to check in by guest " + guestName + ".");
+            isOccupied = true;
+            isClean = false;
+        }else{
+            System.out.println("Room is not available to check in.");
+        }
+    }
+
 }
