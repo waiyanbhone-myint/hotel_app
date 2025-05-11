@@ -45,7 +45,7 @@ public class Main {
         if (room != null) {
             room.checkIn(guestName);
         } else {
-            System.out.println("Room number " + roomNumber + " not found.");
+            System.out.println("Room number " + roomNumber + " not found");
         }
     }
 
