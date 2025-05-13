@@ -34,6 +34,7 @@ public class Main {
     }
 
     public static void checkInMethod() {
+        //Process for guest Checkins
         System.out.println("Please enter the guest name: ");
         String guestName = scanner.next();
 
@@ -45,7 +46,7 @@ public class Main {
         if (room != null) {
             room.checkIn(guestName);
         } else {
-            System.out.println("Room number " + roomNumber + " not found");
+            System.out.println("Room number " + roomNumber + " not found.");
         }
     }
 
