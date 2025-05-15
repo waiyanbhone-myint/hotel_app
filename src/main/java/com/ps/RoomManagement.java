@@ -17,6 +17,7 @@ public class RoomManagement {
         this.payRate = payRate;
         this.isOccupied = false;
         this.isClean = true;
+        this.guestName = null;
     }
 
     //-------- Getter and Setter -------//
@@ -25,63 +26,73 @@ public class RoomManagement {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public double getPayRate() {
         return payRate;
     }
 
-    public void setPayRate(double payRate) {
-        this.payRate = payRate;
-    }
-
     public boolean isOccupied() {
         return isOccupied;
-    }
-
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
     }
 
     public boolean isClean() {
         return isClean;
     }
 
-    public void setClean(boolean clean) {
-        isClean = clean;
-    }
-
     public String getGuestName() {
         return guestName;
+    }
+
+    public void setPayRate(double payRate) {
+        this.payRate = payRate;
+    }
+
+    public void setClean(boolean clean) {
+        isClean = clean;
     }
 
     public void setGuestName(String guestName) {
         this.guestName = guestName;
     }
 
-    //-------Derived Getter-------//
+    //-------Helper Methods-------//
+    public void cleanRoom() {
+        this.isClean = true;
+        System.out.println("Room " + roomNumber + " is now clean. ");
+    }
+
     public boolean roomIsAvailable() {
         return !isOccupied && isClean;
     }
 
-    public void checkIn(String guestName){
-        if (roomIsAvailable()){
-            System.out.println("Room is available to check in by guest " + guestName + ".");
-            isOccupied = true;
-            isClean = false;
-        }else{
-            System.out.println("Room is not available to check in.");
+    public boolean checkIn(String guestName) {
+        if (!isOccupied && isClean) {
+            this.guestName = guestName;
+            this.isOccupied = true;
+            this.isClean = false;
+            System.out.println("Guest " + guestName + " checked into room " + roomNumber);
+            return true;
+        } else {
+            System.out.println("Cannot check in. Room is either occupied or not clean.");
+            return false;
         }
+    }
+
+    public boolean checkOut() {
+        if(isOccupied){
+            this.guestName = null;
+            this.isOccupied = false;
+            this.isClean = false;
+            System.out.println("Room "+roomNumber + " is now vacant.");
+            return true;
+        }else{
+            System.out.println("Room " + roomNumber + " is already vacant.");
+            return false;
+        }
+
     }
 
 }

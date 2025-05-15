@@ -3,16 +3,17 @@ package com.ps;
 import java.util.Scanner;
 
 public class Main {
-
     static Scanner scanner = new Scanner(System.in);
 
-    public static void  main(String []args){
-        while(true){
-            switch (returnUserChoiceAndDisplayMenu()){
-                case 2:
-                    checkInMethod();
-            }
-        }
+    public static void  main(String[] args){
+        RoomManagement roomManagement = new RoomManagement(101, "Single", 100.0);
+
+        roomManagement.checkIn("John");
+        System.out.println("Room " + roomManagement.getRoomNumber() + " occupied: " + roomManagement.isOccupied());
+
+        roomManagement.cleanRoom();
+
+        roomManagement.checkOut();
 
     }
 
@@ -33,20 +34,5 @@ public class Main {
         return scanner.nextInt();
     }
 
-    public static void checkInMethod() {
-        System.out.println("Please enter the guest name: ");
-        String guestName = scanner.next();
-
-        System.out.println("Please enter the room number: ");
-        int roomNumber = scanner.nextInt();
-
-        RoomManagement room = HotelRooms.getRooms().get(roomNumber);
-
-        if (room != null) {
-            room.checkIn(guestName);
-        } else {
-            System.out.println("Room number " + roomNumber + " not found.");
-        }
-    }
 
 }
