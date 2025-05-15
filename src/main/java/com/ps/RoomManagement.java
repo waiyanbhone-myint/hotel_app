@@ -86,7 +86,7 @@ public class RoomManagement {
             this.guestName = null;
             this.isOccupied = false;
             this.isClean = false;
-            System.out.println("Room "+roomNumber + " is now vacant.");
+            System.out.println("Room "+ roomNumber + " is now vacant.");
             return true;
         }else{
             System.out.println("Room " + roomNumber + " is already vacant.");

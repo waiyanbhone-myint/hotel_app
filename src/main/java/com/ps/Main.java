@@ -1,19 +1,25 @@
 package com.ps;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void  main(String[] args){
-        RoomManagement roomManagement = new RoomManagement(101, "Single", 100.0);
+        List<Person> people = new ArrayList<>();
 
-        roomManagement.checkIn("John");
-        System.out.println("Room " + roomManagement.getRoomNumber() + " occupied: " + roomManagement.isOccupied());
+        GuestManagement guest1 = new GuestManagement("John", "G101", "12345-34", 101);
+        EmployeeManagement employee1 = new EmployeeManagement("Alice", "E201", " 1234-847", "Manager", 5000.0);
 
-        roomManagement.cleanRoom();
+        people.add(guest1);
+        people.add(employee1);
 
-        roomManagement.checkOut();
+        for (Person person: people){
+            System.out.println(person.getDetails());
+        }
+
 
     }
 

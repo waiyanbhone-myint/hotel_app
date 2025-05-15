@@ -3,10 +3,12 @@ package com.ps;
 public class Person {
     private String name;
     private String id;
+    private String phoneNumber;
 
-    public Person(String name, String id) {
+    public Person(String name, String id, String phoneNumber) {
         this.name = name;
         this.id = id;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getName() {
@@ -17,8 +19,12 @@ public class Person {
         return id;
     }
 
+    public String getPhoneNumber(){
+        return phoneNumber;
+    }
+
     //---------Helping Method-------//
     public String getDetails(){
-        return "Name: "+ name + ", ID: " + id;
+        return "Name: "+ name + ", ID: " + id + ", PhoneNumber: " + phoneNumber;
     }
 }
