@@ -51,7 +51,61 @@ public class Main {
         scanner.nextLine();
 
         System.out.println("Enter room type (Single/Double/Suite): ");
+        String roomType = scanner.nextLine();
+
+        System.out.println("Enter room rete: ");
+        double rate = scanner.nextDouble();
+
+        RoomActions newRoom = new RoomManagement(roomNumber, roomType, rate);
+        HotelRooms.addRoom(roomNumber, newRoom);
     }
+
+    private static void checkOut() {
+        System.out.print("Enter room number: ");
+        int roomNumber = scanner.nextInt();
+
+        RoomActions room = HotelRooms.getRoom(roomNumber);
+        if (room != null) {
+            room.checkOut();
+        } else {
+            System.out.println("Room not found!");
+        }
+    }
+
+
+    public static void listRooms(){
+        System.out.println("List of all rooms");
+        HotelRooms.listRooms();
+    }
+
+    public static void checkIn(){
+        System.out.println("Enter room number: ");
+        int roomNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter guest name: ");
+        String guestname = scanner.nextLine();
+
+        RoomActions room = HotelRooms.getRoom(roomNumber);
+        if(room != null){
+            room.checkOut();
+        }else{
+            System.out.println("Room not found!");
+        }
+    }
+
+    private static void cleanRoom() {
+        System.out.print("Enter room number: ");
+        int roomNumber = scanner.nextInt();
+
+        RoomActions room = HotelRooms.getRoom(roomNumber);
+        if (room != null) {
+            room.cleanRoom();
+        } else {
+            System.out.println("Room not found!");
+        }
+    }
+
 
 
 }

@@ -40,6 +40,17 @@ public class HotelRooms {
         }
     }
 
+    public static RoomActions getRoom(int roomNumber){
+        if(rooms.containsKey(roomNumber)){
+            RoomActions room = rooms.get(roomNumber);
+            System.out.println("Room " + roomNumber + " found: " + room.getClass().getSimpleName());
+            return room;
+        }else{
+            System.out.println("Room " + roomNumber + " not found.");
+            return null;
+        }
+    }
+
 //    public static void setRooms(HashMap<Integer, RoomManagement> rooms) {
 //        HotelRooms.rooms = rooms;
 //    }
