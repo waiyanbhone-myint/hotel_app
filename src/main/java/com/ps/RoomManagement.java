@@ -1,6 +1,6 @@
 package com.ps;
 
-public class RoomManagement {
+public class RoomManagement implements RoomActions{
 
     private int roomNumber;
     private String type;
@@ -59,6 +59,7 @@ public class RoomManagement {
     }
 
     //-------Helper Methods-------//
+    @Override
     public void cleanRoom() {
         this.isClean = true;
         System.out.println("Room " + roomNumber + " is now clean. ");
@@ -68,6 +69,7 @@ public class RoomManagement {
         return !isOccupied && isClean;
     }
 
+    @Override
     public boolean checkIn(String guestName) {
         if (!isOccupied && isClean) {
             this.guestName = guestName;
@@ -81,6 +83,7 @@ public class RoomManagement {
         }
     }
 
+    @Override
     public boolean checkOut() {
         if(isOccupied){
             this.guestName = null;

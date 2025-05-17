@@ -8,25 +8,31 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void  main(String[] args){
-        List<Person> people = new ArrayList<>();
+        while(true){
+            printMenu();
+            int choice = scanner.nextInt();
+            scanner.nextLine();
 
-        GuestManagement guest1 = new GuestManagement("John", "G101", "12345-34", 101);
-        EmployeeManagement employee1 = new EmployeeManagement("Alice", "E201", " 1234-847", "Manager", 5000.0);
-
-        people.add(guest1);
-        people.add(employee1);
-
-        for (Person person: people){
-            System.out.println(person.getDetails());
+            switch (choice){
+                case 1 -> addRoom();
+                case 2 -> listRooms();
+                case 3 -> checkIn();
+                case 4 -> checkOut();
+                case 5 -> cleanRoom();
+                case 0 -> {
+                    System.out.println("Exiting Hotel Management System.");
+                    return;
+                }
+                default -> System.out.println("Invalid choice! Try again.");
+            }
         }
-
 
     }
 
 
     //----------Helper Method---------//
 
-    public static int returnUserChoiceAndDisplayMenu() {
+    public static void printMenu() {
         System.out.println("======Welcome to Hotel Management======");
         System.out.println("1. Add Room");
         System.out.println("2. Check In Guest");
@@ -37,7 +43,14 @@ public class Main {
         System.out.println("0. Exit");
 
         System.out.print("Enter your choice: ");
-        return scanner.nextInt();
+    }
+
+    public static void addRoom(){
+        System.out.println("Enter room number: ");
+        int roomNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter room type (Single/Double/Suite): ");
     }
 
 

@@ -1,10 +1,12 @@
 package com.ps;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class HotelRooms {
 
-    private static HashMap<Integer, RoomManagement> rooms = new HashMap<>();
+    private static Map<Integer, RoomActions> rooms = new LinkedHashMap<>();
 
     static {
         rooms.put(1, new RoomManagement(1, "Single", 100.0));
@@ -19,11 +21,26 @@ public class HotelRooms {
         rooms.put(10, new RoomManagement(10, "Single", 90.0));
     }
 
-    public static HashMap<Integer, RoomManagement> getRooms() {
-        return rooms;
+    public static void listRooms(){
+        System.out.println("Room List: ");
+        for(Map.Entry<Integer, RoomActions> entry: rooms.entrySet()){
+            int roomNumber = entry.getKey();
+            RoomActions room = entry.getValue();
+            String roomType = room.getClass().getSimpleName();
+            System.out.println("Room Number: " + roomNumber + ", Type: " + roomType);
+        }
     }
 
-    public static void setRooms(HashMap<Integer, RoomManagement> rooms) {
-        HotelRooms.rooms = rooms;
+    public static void addRoom(int roomNumber, RoomActions room){
+        if(rooms.containsKey(roomNumber)){
+            System.out.println("Room " + roomNumber + " already exists!");
+        }else{
+            rooms.put(roomNumber, room);
+            System.out.println("Room " + roomNumber + " added successfully.");
+        }
     }
+
+//    public static void setRooms(HashMap<Integer, RoomManagement> rooms) {
+//        HotelRooms.rooms = rooms;
+//    }
 }
